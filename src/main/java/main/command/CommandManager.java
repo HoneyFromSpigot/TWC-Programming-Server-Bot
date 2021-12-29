@@ -1,13 +1,11 @@
 package main.command;
 
-import javafx.scene.paint.Stop;
 import main.Bot;
 import main.command.impl.*;
 import main.command.impl.music.JoinCommand;
 import main.command.impl.music.NowPlayingCommand;
 import main.command.impl.music.PlayCommand;
 import main.command.impl.music.StopCommand;
-import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.util.ArrayList;
