@@ -1,1 +1,1 @@
-worker: java -jar Bot.jar
+worker: java -jar TWC-Programming-Server-Bot.jar
