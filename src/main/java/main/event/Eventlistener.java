@@ -43,6 +43,7 @@ public class Eventlistener extends ListenerAdapter {
             }
             event.getReaction().removeReaction(event.getUser()).queue();
             event.getGuild().addRoleToMember(event.getMember(), event.getGuild().getRoleById("925700563973320755")).queue();
+            event.getGuild().addRoleToMember(event.getMember(), event.getGuild().getRoleById("925717484718403626")).queue();
         }
 
         //News Channel
