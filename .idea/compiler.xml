@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="TWC-Programming-Server-Bot" />
+        <module name="TWCBot" />
       </profile>
     </annotationProcessing>
   </component>

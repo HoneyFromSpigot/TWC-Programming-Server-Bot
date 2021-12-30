@@ -17,6 +17,7 @@ public class CommandManager {
     private final List<ICommand> commands = new ArrayList<>();
 
     public CommandManager() {
+        addCommand(new PasteCommand());
         addCommand(new PingCommand());
         addCommand(new HelpCommand(this));
         addCommand(new SendVerifyMessageCommand());

@@ -29,9 +29,22 @@
             <name>jfrog-duncte123</name>
             <url>https://duncte123.jfrog.io/artifactory/maven</url>
         </repository>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+
     </repositories>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.menudocs/paste-client-java -->
+        <dependency>
+            <groupId>org.menudocs</groupId>
+            <artifactId>paste-client-java</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
         <dependency>
             <groupId>com.sedmelluq</groupId>
             <artifactId>lavaplayer</artifactId>
