@@ -30,6 +30,7 @@ public class CommandManager {
         addCommand(new PlayCommand());
         addCommand(new StopCommand());
         addCommand(new DownloadCommand());
+        addCommand(new ShowDownloadsCommand());
         addCommand(new SendNewsPingMessageCommand());
         /*
 
