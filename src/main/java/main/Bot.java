@@ -3,6 +3,7 @@ package main;
 import main.event.Eventlistener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import java.util.EnumSet;
@@ -19,7 +20,7 @@ public class Bot {
 
     public static void main(String[] args) {
         System.out.println("Starte Bot...");
-        instance = new Bot(System.getenv("token"));
+        instance = new Bot("OTI1NzA0NDU0NDU0NTQyMzc3.Ycw_dA.fzWmsYPSQRTfUX0oLpVkgxpbs9Q");
     }
 
     private Bot(String token){

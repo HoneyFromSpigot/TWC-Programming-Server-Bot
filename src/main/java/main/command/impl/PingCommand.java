@@ -3,6 +3,8 @@ package main.command.impl;
 import main.command.CommandContext;
 import main.command.ICommand;
 import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.OnlineStatus;
+import net.dv8tion.jda.api.entities.Activity;
 
 public class PingCommand implements ICommand {
     @Override

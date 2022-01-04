@@ -10,6 +10,14 @@
     <build>
         <plugins>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -43,8 +51,8 @@
             <groupId>org.menudocs</groupId>
             <artifactId>paste-client-java</artifactId>
             <version>1.1.1</version>
-        </dependency>
 
+        </dependency>
         <dependency>
             <groupId>com.sedmelluq</groupId>
             <artifactId>lavaplayer</artifactId>
