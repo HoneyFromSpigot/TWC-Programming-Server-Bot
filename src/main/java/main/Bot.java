@@ -20,7 +20,7 @@ public class Bot {
 
     public static void main(String[] args) {
         System.out.println("Starte Bot...");
-        instance = new Bot("OTI1NzA0NDU0NDU0NTQyMzc3.Ycw_dA.fzWmsYPSQRTfUX0oLpVkgxpbs9Q");
+        instance = new Bot(System.getenv("token"));
     }
 
     private Bot(String token){
