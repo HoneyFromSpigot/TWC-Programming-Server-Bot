@@ -1,10 +1,13 @@
 package main.command.impl;
 
+import main.Utils.Github;
 import main.command.CommandContext;
 import main.command.ICommand;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.OnlineStatus;
-import net.dv8tion.jda.api.entities.Activity;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.net.URL;
 
 public class PingCommand implements ICommand {
     @Override

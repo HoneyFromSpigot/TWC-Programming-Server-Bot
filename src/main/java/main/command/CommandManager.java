@@ -29,6 +29,7 @@ public class CommandManager {
         addCommand(new NowPlayingCommand());
         addCommand(new PlayCommand());
         addCommand(new StopCommand());
+        addCommand(new DownloadCommand());
         addCommand(new SendNewsPingMessageCommand());
         /*
 
@@ -97,7 +98,7 @@ public class CommandManager {
             CommandContext ctx = new CommandContext(event, args);
             cmd.handle(ctx);
 
-            ctx.getMessage().delete().queue();
+            //ctx.getMessage().delete().queue();
         }else{
             event.getChannel().sendMessage("Der Command wurde nicht gefunden. Benutze ``" + Bot.getInstance().getPrefix() + "help `` für weitere Informationen.").queue();
         }
