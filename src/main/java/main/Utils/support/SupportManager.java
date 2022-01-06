@@ -13,6 +13,7 @@ public class SupportManager {
 
     public void createNew(Member member){
         SupportChannel channel = new SupportChannel(member);
+        channel.open();
         add(channel);
     }
 
