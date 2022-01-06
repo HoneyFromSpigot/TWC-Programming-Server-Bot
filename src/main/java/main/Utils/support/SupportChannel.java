@@ -23,7 +23,9 @@ public class SupportChannel {
         this.channel = guild.createTextChannel(name).addPermissionOverride(guild.getPublicRole(), null, EnumSet.of(Permission.VIEW_CHANNEL)).setParent(guild.getCategoryById("928689577575723079")).complete();
 
         if (!member.getPermissions(channel).contains(Permission.VIEW_CHANNEL)) {
-            channel.createPermissionOverride(member).queue();
+            PermissionOverride o = channel.createPermissionOverride(member).complete();
+            o.getManager().setAllow(EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_WRITE));
+
         }
 
         Role supportRole = guild.getRoleById("925697783393034289");
