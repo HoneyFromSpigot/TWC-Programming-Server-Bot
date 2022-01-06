@@ -19,6 +19,7 @@ public class SupportManager {
 
                 privateChannel.sendMessage("Dein Ticket konnte nicht erstellt werden, da du bereits ein Ticket offen hast!").queue();
                 privateChannel.close();
+                return;
             }
         }
 
