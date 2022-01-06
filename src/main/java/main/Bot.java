@@ -22,7 +22,9 @@ public class Bot {
 
     public static void main(String[] args) {
         System.out.println("Starte Bot...");
-        instance = new Bot(System.getenv("token"));
+        String token = System.getenv("token");
+        System.out.println("Benutze token: " + token);
+        instance = new Bot(token);
     }
 
     private Bot(String token){
