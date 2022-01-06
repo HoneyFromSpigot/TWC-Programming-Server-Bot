@@ -22,7 +22,7 @@ public class Bot {
 
     public static void main(String[] args) {
         System.out.println("Starte Bot...");
-        instance = new Bot("OTI1NzA0NDU0NDU0NTQyMzc3.Ycw_dA.ptE0AxJkmo8RZYajqn48tUJjvjE");
+        instance = new Bot(System.getenv("token"));
     }
 
     private Bot(String token){
