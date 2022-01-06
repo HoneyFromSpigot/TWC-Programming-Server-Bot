@@ -120,9 +120,6 @@ public class Eventlistener extends ListenerAdapter {
         TextChannel channel = guild.createTextChannel(channelName).addPermissionOverride(guild.getPublicRole(), null, EnumSet.of(Permission.VIEW_CHANNEL)).setParent(parent).complete();
 
 
-        if (!member.getPermissions(channel).contains(Permission.VIEW_CHANNEL)) {
-            channel.createPermissionOverride(member).complete();
-        }
         Role supporter = guild.getRoleById("925697783393034289");
 
         for(Member m : guild.getMembers()){
@@ -131,6 +128,7 @@ public class Eventlistener extends ListenerAdapter {
             }
         }
 
+        channel.createPermissionOverride(member).complete();
         EmbedBuilder builder = new EmbedBuilder();
         builder.setColor(Color.YELLOW);
         builder.setTitle("Ticket-" + member.getUser().getName());
