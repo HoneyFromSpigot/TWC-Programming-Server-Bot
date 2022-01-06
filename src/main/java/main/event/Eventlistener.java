@@ -120,10 +120,9 @@ public class Eventlistener extends ListenerAdapter {
         TextChannel channel = guild.createTextChannel(channelName).addPermissionOverride(guild.getPublicRole(), null, EnumSet.of(Permission.VIEW_CHANNEL)).setParent(parent).complete();
 
 
-        if(!member.getPermissions().contains(Permission.VIEW_CHANNEL)){
+        try{
             channel.createPermissionOverride(member).queue();
-        }
-
+        }catch (Exception ignore){}
         Role supporter = guild.getRoleById("925697783393034289");
 
         for(Member m : guild.getMembers()){
