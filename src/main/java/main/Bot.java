@@ -1,5 +1,6 @@
 package main;
 
+import main.Utils.support.SupportManager;
 import main.event.Eventlistener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -16,15 +17,17 @@ public class Bot {
     private JDA jda;
 
     private Eventlistener eventlistener;
+    private SupportManager supportManager;
 
 
     public static void main(String[] args) {
         System.out.println("Starte Bot...");
-        instance = new Bot(System.getenv("token"));
+        instance = new Bot("OTI1NzA0NDU0NDU0NTQyMzc3.Ycw_dA.ptE0AxJkmo8RZYajqn48tUJjvjE");
     }
 
     private Bot(String token){
         this.eventlistener = new Eventlistener();
+        this.supportManager = new SupportManager();
 
         try{
             JDABuilder b = JDABuilder.createDefault(token).addEventListeners(eventlistener);
@@ -37,6 +40,10 @@ public class Bot {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public SupportManager getSupportManager() {
+        return supportManager;
     }
 
     public String getPrefix() {

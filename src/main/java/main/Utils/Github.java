@@ -9,10 +9,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class Github {
     /*
@@ -54,13 +51,46 @@ public class Github {
             JsonObject jsonObject = parser.parse(json).getAsJsonObject();
             return jsonObject.get("download_url").getAsString();
         }catch (Exception e){
+            return null;
+        }
+    }
+
+    public String getFileWithBlob(String fileName){
+        try{
+            String url = "https://api.github.com/repos/thewebcode/Youtube-Downloads/git/blobs/" + getSha(fileName);
+            String json = request(url);
+            JsonParser parser = new JsonParser();
+            JsonObject o = parser.parse(json).getAsJsonObject();
+            String base = o.get("content").getAsString();
+
+            return base;
+
+        }catch (Exception e){
             e.printStackTrace();
         }
 
         return null;
     }
 
+    public String getSha(String fileName){
+        System.out.println("Suche Sha für : " + fileName);
+        String url = "https://api.github.com/repos/thewebcode/Youtube-Downloads/contents/";
+        String json = request(url);
+        JsonParser parser = new JsonParser();
+        JsonArray array = parser.parse(json).getAsJsonArray();
+
+        for(int i = 0; i < array.size(); i++){
+            JsonObject o = array.get(i).getAsJsonObject();
+            if(o.get("name").getAsString().equals(fileName)){
+                return o.get("sha").getAsString();
+            }
+        }
+
+        return null;
+    }
+
     private String request(String url){
+        System.out.println("Sende Request an: " + url);
         StringBuilder b = new StringBuilder();
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();

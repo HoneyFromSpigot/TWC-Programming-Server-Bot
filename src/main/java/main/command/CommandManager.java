@@ -32,6 +32,7 @@ public class CommandManager {
         addCommand(new DownloadCommand());
         addCommand(new ShowDownloadsCommand());
         addCommand(new SendNewsPingMessageCommand());
+        addCommand(new SendSupportMessage());
         /*
 
         addCommand(new PingCommand());

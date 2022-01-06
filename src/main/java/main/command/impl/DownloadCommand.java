@@ -36,12 +36,13 @@ public class DownloadCommand implements ICommand {
                 FileUtils.copyURLToFile(new URL(github.getFileUrl(wantedFile)), f);
             }
             ctx.getChannel().sendMessage(wantedFile).addFile(f).queue();
-            return;
+
         }catch (Exception e){
-            channel.sendMessage("Es gab einen Fehler beim Download. Kontaktiere den Support wenn der Fehler weiterhin besteht.").queue();
+            channel.sendMessage("Die Datei ist sehr groß, und kann nicht als Datei auf dem Server versendet werden. Ziehe ein Support Ticket, um einen Link zur Datei zu erhalten.").queue();
             return;
         }
     }
+
 
     @Override
     public String getName() {
