@@ -1,6 +1,7 @@
 package main.event;
 
 import main.Bot;
+import main.Utils.support.SupportChannel;
 import main.command.CommandManager;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -41,7 +42,14 @@ public class Eventlistener extends ListenerAdapter {
         if(event.getUser().isBot()) return;
         String reaction = event.getReaction().getReactionEmote().getEmoji();
 
-
+        if(!Bot.getInstance().getSupportManager().getSupportChannels().isEmpty()){
+            for(SupportChannel c : Bot.getInstance().getSupportManager().getSupportChannels()){
+                if (c.getChannelId().equals(event.getChannel().getId())) {
+                    Bot.getInstance().getSupportManager().close(c);
+                    return;
+                }
+            }
+        }
 
 
         //Support Channel

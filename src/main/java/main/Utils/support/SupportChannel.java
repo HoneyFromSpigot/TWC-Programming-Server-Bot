@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.entities.*;
 
 import java.awt.*;
 import java.util.EnumSet;
+import java.util.concurrent.TimeUnit;
 
 public class SupportChannel {
     private TextChannel channel;
@@ -48,8 +49,22 @@ public class SupportChannel {
         pc.close();
     }
 
+    public void close(){
+        EmbedBuilder builder = new EmbedBuilder();
+        builder.setColor(Color.GREEN);
+        builder.setTitle("Ticket geschlossen");
+        builder.setDescription("Das Support Ticket wurde geschlossen. Der Channel wird in 10 Sekunden automatisch gelöscht.");
+
+        channel.sendMessage(builder.build()).queue();
+        channel.delete().queueAfter(10, TimeUnit.SECONDS);
+    }
+
     public Member getMember() {
         return member;
+    }
+
+    public String getChannelId(){
+        return channel.getId();
     }
 
     public TextChannel getChannel() {
