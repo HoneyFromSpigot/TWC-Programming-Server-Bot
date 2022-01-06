@@ -24,7 +24,7 @@ public class SupportChannel {
 
         if (!member.getPermissions(channel).contains(Permission.VIEW_CHANNEL)) {
             PermissionOverride o = channel.createPermissionOverride(member).complete();
-            o.getManager().setAllow(EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_WRITE));
+            o.getManager().setAllow(EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_WRITE)).queue();
 
         }
 
