@@ -134,7 +134,7 @@ public class Eventlistener extends ListenerAdapter {
         EmbedBuilder builder = new EmbedBuilder();
         builder.setColor(Color.YELLOW);
         builder.setTitle("Ticket-" + member.getUser().getName());
-        builder.setDescription("Um das Ticket zu schließen drücke auf das ❌");
+        builder.setDescription("Dein Ticket ist fertig " + member.getAsMention() + ". Um das Ticket zu schließen drücke auf das ❌");
         channel.sendMessage(builder.build()).complete().addReaction("❌").queue();
         Bot.getInstance().getSupportManager().add(channel.getId());
     }
