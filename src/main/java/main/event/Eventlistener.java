@@ -41,20 +41,7 @@ public class Eventlistener extends ListenerAdapter {
         if(event.getUser().isBot()) return;
         String reaction = event.getReaction().getReactionEmote().getEmoji();
 
-        if(!Bot.getInstance().getSupportManager().getChannels().isEmpty()){
-            for(String s : Bot.getInstance().getSupportManager().getChannels()){
-                if(event.getChannel().getId().equals(s)){
-                    if(!reaction.equals("❌")){
-                        event.getReaction().removeReaction(event.getUser()).queue();
-                        return;
-                    }
 
-                    closeSupportChannel(event.getTextChannel());
-                    event.getReaction().removeReaction(event.getUser()).queue();
-                    return;
-                }
-            }
-        }
 
 
         //Support Channel
@@ -63,10 +50,9 @@ public class Eventlistener extends ListenerAdapter {
                 event.getReaction().removeReaction(event.getUser()).queue();
                 return;
             }
-            openSupportChannel(event.getMember());
+            Bot.getInstance().getSupportManager().createNew(event.getMember());
+
             event.getReaction().removeReaction(event.getUser()).queue();
-
-
         }
 
         //Verify Channel
@@ -103,38 +89,11 @@ public class Eventlistener extends ListenerAdapter {
     }
 
     private void closeSupportChannel(TextChannel channel){
-        EmbedBuilder builder = new EmbedBuilder();
-        builder.setColor(Color.GREEN);
-        builder.setTitle("Ticket geschlossen");
-        builder.setDescription("Das Ticket wurde geschlossen. Der Channel wird in 10 Sekunden automatisch gelöscht.");
 
-        channel.sendMessage(builder.build()).queue();
-        channel.delete().queueAfter(10, TimeUnit.SECONDS);
     }
 
     private void openSupportChannel(Member member){
-        String channelName = "support-" + member.getUser().getName();
 
-        Guild guild = member.getGuild();
-        Category parent = guild.getCategoryById("928689577575723079");
-        TextChannel channel = guild.createTextChannel(channelName).addPermissionOverride(guild.getPublicRole(), null, EnumSet.of(Permission.VIEW_CHANNEL)).setParent(parent).complete();
-
-
-        Role supporter = guild.getRoleById("925697783393034289");
-
-        for(Member m : guild.getMembers()){
-            if (m.hasPermission(Permission.MANAGE_SERVER) || m.getRoles().contains(supporter)) {
-                channel.createPermissionOverride(m).queue();
-            }
-        }
-
-        channel.createPermissionOverride(member).complete();
-        EmbedBuilder builder = new EmbedBuilder();
-        builder.setColor(Color.YELLOW);
-        builder.setTitle("Ticket-" + member.getUser().getName());
-        builder.setDescription("Dein Ticket ist fertig " + member.getAsMention() + ". Um das Ticket zu schließen drücke auf das ❌");
-        channel.sendMessage(builder.build()).complete().addReaction("❌").queue();
-        Bot.getInstance().getSupportManager().add(channel.getId());
     }
 
     @Override
